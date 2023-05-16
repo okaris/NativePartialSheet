@@ -78,6 +78,9 @@ struct NativePartialSheetView<PrefContent: View>: UIViewRepresentable {
             sheetController.prefersGrabberVisible = prefs.presentationDragIndicator == .visible
             sheetController.largestUndimmedDetentIdentifier = prefs.largestUndimmedDetent?.id
             sheetController.preferredCornerRadius = prefs.preferredCornerRadius
+            if #available(iOS 16.4) {
+                sheetController.presentationBackgroundInteraction(.enabled)
+            }
             sheetController.prefersEdgeAttachedInCompactHeight = prefs.prefersEdgeAttachedInCompactHeight
             sheetController.prefersScrollingExpandsWhenScrolledToEdge = prefs.prefersScrollingExpandsWhenScrolledToEdge
             sheetController.widthFollowsPreferredContentSizeWhenEdgeAttached = prefs.widthFollowsPreferredContentSizeWhenEdgeAttached
